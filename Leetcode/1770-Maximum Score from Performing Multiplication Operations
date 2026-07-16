@@ -1,0 +1,45 @@
+/**
+ * Runnable test harness for Solution.java
+ * LeetCode 1770. Maximum Score from Performing Multiplication Operations
+ *
+ * Compile: javac Main.java Solution.java
+ * Run:     java Main
+ */
+public class Main {
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+
+        // Test 1
+        int[] nums1 = {1, 2, 3};
+        int[] mult1 = {3, 2, 1};
+        int expected1 = 14;
+        runTest(sol, nums1, mult1, expected1, "Test 1");
+
+        // Test 2
+        int[] nums2 = {-5, -3, -3, -2, 7, 1};
+        int[] mult2 = {-10, -5, 3, 4, 6};
+        int expected2 = 102;
+        runTest(sol, nums2, mult2, expected2, "Test 2");
+
+        // Test 3: single operation
+        int[] nums3 = {-13, -8, -13, -11, -12, -14, -13, -4};
+        int[] mult3 = {-13};
+        int expected3 = 169;
+        runTest(sol, nums3, mult3, expected3, "Test 3 (single op)");
+
+        // Test 4: m == n (use every element)
+        int[] nums4 = {1, -2, 3, -4};
+        int[] mult4 = {2, -1, 4, -3};
+        // Not asserting expected value, just verifying it runs and returns an int
+        int result4 = sol.maximumScore(nums4, mult4);
+        System.out.println("Test 4 (m == n): result = " + result4);
+    }
+
+    private static void runTest(Solution sol, int[] nums, int[] multipliers,
+                                 int expected, String label) {
+        int actual = sol.maximumScore(nums, multipliers);
+        String status = (actual == expected) ? "PASS" : "FAIL";
+        System.out.println(label + ": expected=" + expected
+                + ", actual=" + actual + " -> " + status);
+    }
+}
